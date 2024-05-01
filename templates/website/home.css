@@ -1,0 +1,6 @@
+.bg-image {
+    background-image: url('path/to/your/background/image.jpg');
+    /* Adjust background properties as needed */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust as needed */
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html'%} {%block content%}
+
+<div class="card mx-auto" style="width: 76rem">
+  <div class="card-body">
+    <div class="bg-primary text-white p-3 mb-3 rounded-4">
+    <h5 class="card-title mb-3">All Applicants</h5>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="bg-warning text-white p-3">First Name</th>
+          <th scope="col" class="bg-warning text-white p-3">Last Name</th>
+          <th scope="col" class="bg-warning text-white p-3">Location</th>
+          <th scope="col" class="bg-warning text-white p-3">Job Position</th>
+          <th scope="col" class="bg-warning text-white p-3">Application Date</th>
+          <th scope="col" class="bg-warning text-white p-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for applicant in applicants%}
+        <tr>
+          <td>{{applicant.user.resume.first_name}}</td>
+          <td>{{applicant.user.resume.surname}}</td>
+          <td>{{applicant.user.resume.location}}</td>
+          <td>{{applicant.user.resume.job_title}}</td>
+          <td>{{applicant.timestamp}}</td>
+          <td><a target="_blank" href="{{applicant.user.resume.upload_resume.url}}"><small>Download Resume</small></a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%endblock content%}

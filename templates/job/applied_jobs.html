@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{%block content%}
+
+
+
+<div class="card mx-auto rounded-4" style="width:76rem;">
+<div class="card-body">
+    <div class="bg-primary text-white p-3 mb-3 rounded-4">
+        <h5 class="card-title mb-0">
+            Applied Jobs
+        </h5>
+    </div>
+    <table class="table table-bordered">
+        <thead >
+            <tr>
+                <th scope="col" class="bg-warning text-white p-3">Job Title</th>
+                <th scope="col" class="bg-warning text-white p-3">Location</th>
+                <th scope="col" class="bg-warning text-white p-3">Salary (NGN)</th>
+                <th scope="col" class="bg-warning text-white p-3">Job Type</th>
+                <th scope="col" class="bg-warning text-white p-3">Industry</th>
+                <th scope="col" class="bg-warning text-white p-3">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs%}
+            <tr>
+                <td>{{job.job.title}}</td>
+                <td>{{job.job.city}} , {{job.job.state}}</td>
+                <td>{{job.job.salary}}</td>
+                <td>{{job.job.job_type}}</td>
+                <td>{{job.job.job_type}}</td>
+                <td>{{job.job.industry}}</td>
+                <td><a href="{% url 'job-details' job.job.pk %}"><small>View Job</small></a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+</div>
+{%endblock content%}

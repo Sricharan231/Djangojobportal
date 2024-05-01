@@ -1,0 +1,44 @@
+{% extends 'base.html'%} {%block content%}
+
+<div class="card mx-auto" style="width: 76rem">
+  <div class="card-body">
+    <div class="bg-primary text-white p-3 mb-3 rounded-4">
+    <h5 class="card-title mb-3">Manage Jobs</h5>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" class="bg-warning text-white p-3">Job Title</th>
+          <th scope="col" class="bg-warning text-white p-3">Location</th>
+          <th scope="col" class="bg-warning text-white p-3">Salary (NGN)</th>
+          <th scope="col" class="bg-warning text-white p-3">No. of Applicants</th>
+          <th scope="col" class="bg-warning text-white p-3">Status</th>
+          <th scope="col" class="bg-warning text-white p-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in jobs%}
+        <tr>
+          <td>{{job.title}}</td>
+          <td>{{job.city}}, {{job.state}}</td>
+          <td>{{job.salary}}</td>
+          <td>
+            {{job.applyjob_set.all.count}}
+            <a href="{%url 'all-applicants' job.pk %}"
+              ><small> view all</small></a
+            >
+          </td>
+          {%if job.is_available%}
+          <td><span class="badge bg-success">Active</span></td>
+          {%else%}
+          <td><span class="badge bg-warning">Not Active</span></td>
+          {%endif%}
+          <td><a href="{%url 'update-job' job.pk%}">Update Job</a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+{%endblock content%}
